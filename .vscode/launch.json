@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "NodeMCU-Debug",
+            "type": "nodemcu",
+            "request": "launch",
+            "port": "COM5",
+            "baud": 115200
+        }
+    ]
+}
