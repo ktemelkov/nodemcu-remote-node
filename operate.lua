@@ -10,7 +10,7 @@ end
 wifi.eventmon.register(wifi.eventmon.STA_GOT_IP, function(T) 
     print("\n\tSTA - GOT IP".."\n\tStation IP: "..T.IP.."\n\tSubnet mask: ".. T.netmask.."\n\tGateway IP: "..T.gateway)
 
-	local hw = dofile("hardware_12.lc")
+	local hw = dofile("hardware.lc")
 
 	mdns.register(cfg.net_hostname)
 	llmnr.register(cfg.net_hostname)

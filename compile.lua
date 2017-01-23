@@ -42,8 +42,7 @@ local serverFiles = {
 	'operate.lua',
 	'default.lua',
 	'netconfig.lua',
-	'hardware_01.lua',
-	'hardware_12.lua', 
+	'hardware.lua', 
 }
 
 for i, f in ipairs(serverFiles) do compileAndRemoveIfNeeded(f) end
