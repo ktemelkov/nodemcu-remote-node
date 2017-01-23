@@ -17,7 +17,7 @@ return function(conn, cfg, method, path, args, content)
 					.. "<tr><td>Broker address:</td><td><input name='mqtt_broker' value='" .. util.xml_escape(cfg.mqtt_broker) .. "'/></td></tr>"
 					.. "<tr><td>Broker port:</td><td><input name='mqtt_port' value='" .. util.xml_escape(cfg.mqtt_port) .. "'/></td></tr>"
 					.. "<tr><td>Username:</td><td><input name='mqtt_user' value='" .. util.xml_escape(cfg.mqtt_user) .. "'/></td></tr>"
-					.. "<tr><td>Password:</td><td><input name='mqtt_passwd' value='" .. util.xml_escape(cfg.mqtt_passwd) .. "'/></td></tr>"
+					.. "<tr><td>Password:</td><td><input name='mqtt_passwd' type='password' value='" .. util.xml_escape(cfg.mqtt_passwd) .. "'/></td></tr>"
 					.. "<tr><td>Topic:</td><td><input name='mqtt_topic' value='" .. util.xml_escape(cfg.mqtt_topic) .. "'/></td></tr>", part5)
 		end
 		
@@ -47,6 +47,7 @@ return function(conn, cfg, method, path, args, content)
 		dofile("http_headers.lc")(conn, cfg, 200, "OK", "", "text/html", part1)
 		
 	elseif method == "POST" then
+	print(content)
 		if content ~= nil and content ~= "" then
 			content = util.parseFormData(content)
 		
@@ -73,6 +74,8 @@ return function(conn, cfg, method, path, args, content)
 				node.compile(f)
 				file.remove(f)
 				f = ""
+
+				print("Configuration saved.")
 			end
 
 			if f == "" then
