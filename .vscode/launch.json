@@ -5,8 +5,8 @@
             "name": "NodeMCU-Debug",
             "type": "nodemcu",
             "request": "launch",
-            "port": "COM5",
-            "baud": 115200
+            "port": "COM6",
+            "baud": 74880
         }
     ]
 }
