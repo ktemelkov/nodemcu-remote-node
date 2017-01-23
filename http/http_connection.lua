@@ -31,13 +31,20 @@ return function(conn, cfg, pl, context)
 						context.content = {}
 						
 						local cont = pl:match("\r\n\r\n(.*)")
-						
-						if cont then
-							table.insert(context.content, cont)
-							context.content_pos = cont:len()
-						end
 
 						context.state = 1
+						
+						if cont then
+							context.content_pos = cont:len()
+
+							if context.content_pos >= context.content_len then							
+								context.content = cont								
+								fcont = true			
+								context.state = -1
+							else
+								table.insert(context.content, cont)							
+							end
+						end
 					else
 						dofile("http_error.lc")(conn, cfg, 400, "Bad Request")
 					end
@@ -65,7 +72,7 @@ return function(conn, cfg, pl, context)
 				t[i] = nil 
 			end
 			
-			fcont = true			
+			fcont = true
 			context.state = -1
 		end
 	end
